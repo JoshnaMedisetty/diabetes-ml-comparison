@@ -1,13 +1,12 @@
-
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
-from config import DATA_PATH, RANDOM_STATE
+from src.config import DATA_PATH, RANDOM_STATE
 
 def load_data():
-    df = pd.read_csv(DATA_PATH)
+    df = pd.read_csv('data/diabetes.csv')
     # Handle zeros in biological features
     zero_features = ['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI']
     df[zero_features] = df[zero_features].replace(0, np.nan)
